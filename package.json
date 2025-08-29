@@ -1,0 +1,44 @@
+{
+  "name": "typesense-cloudron",
+  "version": "29.0.0",
+  "description": "A production-ready Cloudron package for Typesense search engine",
+  "main": "Dockerfile",
+  "scripts": {
+    "build": "./build.sh",
+    "test": "docker-compose up --build"
+  },
+  "keywords": [
+    "typesense",
+    "search",
+    "cloudron",
+    "docker",
+    "search-engine",
+    "api",
+    "full-text-search"
+  ],
+  "author": "Typesense Team",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/typesense-cloudron.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/typesense-cloudron/issues"
+  },
+  "homepage": "https://github.com/yourusername/typesense-cloudron#readme",
+  "engines": {
+    "cloudron": ">=7.0.0"
+  },
+  "files": [
+    "Dockerfile",
+    "start.sh",
+    "typesense.ini.template",
+    "CloudronManifest.json",
+    "icon.png",
+    "build.sh",
+    "docker-compose.yml",
+    "LICENSE",
+    "README.md",
+    "readme_instructions.md"
+  ]
+}

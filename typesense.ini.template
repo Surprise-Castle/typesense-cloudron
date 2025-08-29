@@ -1,0 +1,17 @@
+[server]
+api-address = 0.0.0.0
+api-port = 8108
+data-dir = ${TYPESENSE_DATA_DIR}
+log-dir = /run/typesense
+api-key = ${TYPESENSE_API_KEY}
+enable-cors = ${TYPESENSE_ENABLE_CORS}
+log-level = ${TYPESENSE_LOG_LEVEL}
+
+# Performance settings
+num-memory-shards = 4
+snapshot-interval-seconds = 3600
+healthy-read-lag = 1000
+healthy-write-lag = 1000
+
+# Threading
+thread-pool-size = 8

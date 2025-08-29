@@ -1,0 +1,26 @@
+{
+  "id": "org.typesense.cloudronapp",
+  "title": "Typesense",
+  "author": "Typesense Team",
+  "description": "Fast, typo-tolerant search engine for building delightful search experiences. Open source alternative to Algolia and ElasticSearch.",
+  "tagline": "Lightning-fast search engine",
+  "version": "29.0.0",
+  "healthCheckPath": "/health",
+  "httpPort": 8108,
+  "addons": {},
+  "manifestVersion": 2,
+  "website": "https://typesense.org",
+  "contactEmail": "contact@typesense.org",
+  "icon": "file://icon.png",
+  "tags": [
+    "search",
+    "database",
+    "api"
+  ],
+  "minBoxVersion": "7.0.0",
+  "maxBoxVersion": "99.0.0",
+  "optionalSso": false,
+  "memoryLimit": 536870912,
+  "tcpPorts": {},
+  "postInstallMessage": "Typesense is now running! You can access the API at the app URL. Your API key can be found in the app's environment variables or generated via the API. Check the Typesense documentation at https://typesense.org/docs/ for usage instructions."
+}

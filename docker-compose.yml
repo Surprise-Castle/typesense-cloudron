@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  typesense-test:
+    build: .
+    ports:
+      - "8108:8108"
+    environment:
+      - TYPESENSE_API_KEY=test-api-key-change-in-production
+      - TYPESENSE_DATA_DIR=/app/data/typesense
+      - TYPESENSE_LOG_LEVEL=INFO
+      - TYPESENSE_ENABLE_CORS=true
+    volumes:
+      - ./test-data:/app/data
+      - ./logs:/run/typesense
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8108/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
