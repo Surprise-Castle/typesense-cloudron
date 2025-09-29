@@ -13,9 +13,11 @@ RUN curl -L https://dl.typesense.org/releases/${TYPESENSE_VERSION}/typesense-ser
 # Create configuration template
 COPY typesense.ini.template /app/code/typesense.ini.template
 COPY start.sh /app/code/start.sh
+COPY backup.sh /app/code/backup.sh
 
 # Make start script executable
 RUN chmod +x /app/code/start.sh
+RUN chmod +x /app/code/backup.sh
 
 # Create ALL directories that Typesense will need, with proper ownership
 RUN mkdir -p /run/typesense /app/data /app/data/db /app/data/meta /app/data/analytics && \

@@ -12,7 +12,7 @@ if [ -z "${TYPESENSE_API_KEY:-}" ]; then
 fi
 
 # Set default values for environment variables - using /run for database files
-export TYPESENSE_DATA_DIR=${TYPESENSE_DATA_DIR:-/run/typesense-data}
+export TYPESENSE_DATA_DIR=${TYPESENSE_DATA_DIR:-/app/data}
 export TYPESENSE_LOG_LEVEL=${TYPESENSE_LOG_LEVEL:-INFO}
 export TYPESENSE_ENABLE_CORS=${TYPESENSE_ENABLE_CORS:-true}
 
@@ -22,6 +22,7 @@ mkdir -p "${TYPESENSE_DATA_DIR}"
 mkdir -p "${TYPESENSE_DATA_DIR}/db"
 mkdir -p "${TYPESENSE_DATA_DIR}/meta"
 mkdir -p "${TYPESENSE_DATA_DIR}/analytics"
+mkdir -p "${TYPESENSE_DATA_DIR}/snapshots"  # New: For storing triggered snapshots
 
 # Set ownership to cloudron user
 chown -R cloudron:cloudron "${TYPESENSE_DATA_DIR}"

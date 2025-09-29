@@ -7,7 +7,9 @@
   "version": "29.0.0",
   "healthCheckPath": "/health",
   "httpPort": 8108,
-  "addons": {},
+  "addons": {
+    "localstorage": {}
+  },
   "manifestVersion": 2,
   "website": "https://typesense.org",
   "contactEmail": "contact@typesense.org",
