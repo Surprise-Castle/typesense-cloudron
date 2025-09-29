@@ -5,7 +5,15 @@ All notable changes to this Typesense Cloudron package will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [29.0.0] - 2024-12-19
+## 29.0.1 (2025-09-29)
+- Added localstorage addon for persistent /app/data.
+- Defaulted data-dir to /app/data.
+- Added backup.sh to create snapshots via API.
+- Added restore.sh to untar snapshots on startup.
+- Improved logging for API key.
+
+## 29.0.0 (Initial Release)
+- Initial package for Typesense 29.0.
 
 ### Added
 - Initial release of Typesense Cloudron package

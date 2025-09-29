@@ -4,7 +4,7 @@ set -e
 
 # Configuration
 PACKAGE_NAME="typesense-cloudron"
-VERSION="29.0.0"
+VERSION="29.0.1"
 TYPESENSE_VERSION="29.0"
 
 # Colors for output
@@ -52,6 +52,7 @@ echo ""
 # Build the Docker image
 echo -e "${GREEN}Building Docker image...${NC}"
 docker build \
+    --platform linux/amd64 \
     --build-arg TYPESENSE_VERSION=$TYPESENSE_VERSION \
     -t "$IMAGE_NAME" \
     -t "$TIMESTAMPED_IMAGE" \

@@ -9,6 +9,8 @@ if [ -z "${TYPESENSE_API_KEY:-}" ]; then
     export TYPESENSE_API_KEY=$(openssl rand -hex 32)
     echo "Generated API Key: ${TYPESENSE_API_KEY}"
     echo "IMPORTANT: Save this API key! You'll need it to access Typesense."
+else
+    echo "Using provided API Key: ${TYPESENSE_API_KEY}"
 fi
 
 # Set default values for environment variables - using /run for database files
@@ -39,6 +41,9 @@ echo "API Port: 8108"
 echo "Health Check: http://localhost:8108/health"
 echo "Debug Info: http://localhost:8108/debug"
 echo "================================"
+
+# Run restore if snapshot exists
+/app/code/restore.sh
 
 # Start Typesense as the cloudron user
 exec /usr/local/bin/gosu cloudron:cloudron /app/code/typesense-server \

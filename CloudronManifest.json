@@ -4,7 +4,7 @@
   "author": "Typesense Team",
   "description": "Fast, typo-tolerant search engine for building delightful search experiences. Open source alternative to Algolia and ElasticSearch.",
   "tagline": "Lightning-fast search engine",
-  "version": "29.0.0",
+  "version": "29.0.1",
   "healthCheckPath": "/health",
   "httpPort": 8108,
   "addons": {
