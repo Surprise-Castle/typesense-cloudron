@@ -13,11 +13,18 @@ snapshot-interval-seconds = 3600
 healthy-read-lag = 1000
 healthy-write-lag = 1000
 
-# Cache — default is 1000, raising to 10k improves hit ratio
-# (current 42% → expected 70%+ with 2M product catalog)
-cache-num-entries = 10000
+# Cache — default is 1000.  With 2M products × many collection/filter/page
+# combinations, 10k evicts too fast (observed 29% hit ratio).  100k entries at
+# ~2-5 KB avg → 200-500 MB — well within 32 GB / 33% memory headroom.
+cache-num-entries = 100000
 
 
-# Threading — use 4 of 8 vCPUs for search, leaving headroom
-# for imports, raft consensus, and OS overhead.
-thread-pool-size = 4
+# Threading — use 6 of 8 vCPUs for search.  Safety case:
+#   • Text searches capped by search_cutoff_ms=700ms (no 30s zombies)
+#   • Facet q=* queries capped by facet_sample_percent (5-10%, ~200ms)
+#   • SDK retry bug fixed (no 3× retry storms)
+#   • Client connectionTimeoutSeconds=5 prevents orphaned waits
+# Worst case burst: 6 threads × 300ms avg = 1800ms CPU = 225%
+# This is safe for 8 cores and gives throughput headroom for 58 RPS peaks
+# (theoretical max: 6/0.077 ≈ 78 QPS vs old 52 QPS with 4 threads).
+thread-pool-size = 6
