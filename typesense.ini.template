@@ -13,5 +13,11 @@ snapshot-interval-seconds = 3600
 healthy-read-lag = 1000
 healthy-write-lag = 1000
 
-# Threading
-thread-pool-size = 8
+# Cache — default is 1000, raising to 10k improves hit ratio
+# (current 42% → expected 70%+ with 2M product catalog)
+cache-num-entries = 10000
+
+
+# Threading — use 4 of 8 vCPUs for search, leaving headroom
+# for imports, raft consensus, and OS overhead.
+thread-pool-size = 4
